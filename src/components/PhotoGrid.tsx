@@ -22,11 +22,20 @@ const PhotoGrid = ({ onClickPhoto }: PhotoGridProps) => {
     });
   }, [pageCount]);
 
-  return photos.map(({ id, download_url }) => (
-    <div key={id} onClick={() => onClickPhoto?.(download_url)}>
-      {id} : {download_url}
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 p-4 place-items-center w-full">
+      {photos.map(({ id, download_url }) => (
+        <div className="border border-black w-full aspect-[3/2]">
+          <img
+            key={id}
+            className="hover:opacity-75 cursor-pointer w-full object-cover aspect-[3/2]"
+            onClick={() => onClickPhoto?.(download_url)}
+            src={download_url}
+          />
+        </div>
+      ))}
     </div>
-  ));
+  );
 };
 
 export default PhotoGrid;
