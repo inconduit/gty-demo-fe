@@ -6,11 +6,12 @@ const IMAGE_TEXT_ENDPOINT_URL = `${IMAGE_TEXT_API_HOST}/image-text`;
 
 interface ImageTextLoaderProps {
   imageUrl: string;
+  onLoadComplete?: () => void;
   text: string;
 }
 
-const ImageTextLoader = ({ imageUrl, text }: ImageTextLoaderProps) => {
-  const [imgSrc, setImgSrc] = useState<string>(null);
+const ImageTextLoader = ({ imageUrl, onLoadComplete, text }: ImageTextLoaderProps) => {
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(IMAGE_TEXT_ENDPOINT_URL, {
@@ -23,7 +24,7 @@ const ImageTextLoader = ({ imageUrl, text }: ImageTextLoaderProps) => {
       .catch((error) => console.error(error));
   }, [imageUrl, text]);
 
-  return imgSrc ? <img src={imgSrc} style={{ width: '100%' }} /> : null;
+  return imgSrc ? <img src={imgSrc} className="w-full h-full" onLoad={() => onLoadComplete?.()} /> : null;
 };
 
 export default ImageTextLoader;
