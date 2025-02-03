@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Spinner from './Spinner.tsx';
 
-const IMAGE_LIST_API_ENDPOINT = 'http://picsum.photos/v2/list';
+const IMAGE_LIST_API_ENDPOINT = 'https://picsum.photos/v2/list';
 
 const fetchPhotos = async (page: number, limit = 10) => {
   return fetch(`${IMAGE_LIST_API_ENDPOINT}?page=${page}&limit=${limit}`)
