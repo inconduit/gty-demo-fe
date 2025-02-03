@@ -6,7 +6,7 @@ interface ImageTextBuilderProps {
 }
 
 // TODO extract to env vars
-const IMAGE_TEXT_API_HOST = 'http://localhost:3000';
+const IMAGE_TEXT_API_HOST = 'http://3.137.213.141:3000';
 const IMAGE_TEXT_ENDPOINT_URL = `${IMAGE_TEXT_API_HOST}/image-text`;
 
 const ImageTextBuilder = ({ imageUrl }: ImageTextBuilderProps) => {
